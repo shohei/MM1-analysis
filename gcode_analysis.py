@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def input_float_number():
-    num = input("Input wait time [sec] >> ")
+def input_speed_reduce_time():
+    num = input("Input speed reduce time [sec] >> ")
     try:
         num = float(num)
         print("wait_time is set to: {0}".format(num))
@@ -21,7 +21,7 @@ def onclick(event):
     print("threshold is set as {0} mm".format(r))
     plt.legend(loc="best")
     plt.draw()
-    input_float_number()
+    input_speed_reduce_time()
 
 def plot_result():
     plt.title('Travel distance at each layer')
