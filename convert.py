@@ -1,4 +1,11 @@
 import re
+import sys
+
+if len(sys.argv)<2:
+    print("Convert error: specify file")
+    exit()
+filename = sys.argv[1]
+
 g0pattern = r"^G0.*"
 g1pattern = r"^G1.*"
 g0re = re.compile(g0pattern)
@@ -19,7 +26,8 @@ currentZ = 0
 currentS = 0
 fout = open('out.csv','w')
 should_update = False
-with open('telescope.gcode') as f:
+
+with open(filename) as f:
     lines = f.readlines()
     for line in lines:
         if g0re.match(line):
