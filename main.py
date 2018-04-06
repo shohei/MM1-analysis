@@ -87,7 +87,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def input_reduce_rate():
-    num = input("Input reduce rate [%] (default: 80) >> ")
+    VERSION = sys.version.split(' ')[0].split('.')[0]
+    if VERSION=='2':
+        num = raw_input("Input reduce rate [%] (default: 80) >> ")
+    elif VERSION=='3':
+        num = input("Input reduce rate [%] (default: 80) >> ")
+    else:    
+        print("Invalid python version.")
+        exit()
     if num=="":
       num = 80
     try:
