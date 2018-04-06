@@ -5,7 +5,6 @@ import pdb
 if len(sys.argv)<2:
     print("Convert error: specify file")
     exit()
-filename = sys.argv[1]
 
 g0pattern = r"^G0.*"
 g1pattern = r"^G1.*"
@@ -25,7 +24,9 @@ currentX = 0
 currentY = 0
 currentZ = 0
 currentS = 0
-fout = open(filename + '_converted.gcode','w')
+filepath = sys.argv[1]
+filename = filepath.split('/')[-1]
+fout = open("./converted/"+filename,'w')
 
 LASER_REDUCTION_RATE = 0.8
 
@@ -52,7 +53,7 @@ z_filter_list = [17. , 17.6, 17.9, 18. , 18.1, 18.3, 18.4, 18.6, 18.7, 18.8, 18.
        40. , 40.1, 40.2, 40.3, 40.4, 40.5, 40.6, 40.7, 40.8, 40.9, 41. ,
        41.2, 41.4, 41.6, 41.8, 41.9, 42.4, 42.8]
 
-with open(filename) as f:
+with open(filepath) as f:
     lines = f.readlines()
     for line in lines:
         if g0re.match(line):
