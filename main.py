@@ -37,7 +37,9 @@ currentX = 0
 currentY = 0
 currentZ = 0
 currentS = 0
-fout = open('out.csv','w')
+
+TMP_CSV_FOLDER = "./tmp/out.csv"
+fout = open(TMP_CSV_FOLDER,'w')
 should_update = False
 
 with open(filepath) as f:
@@ -115,7 +117,7 @@ def plot_result():
     plt.xlabel('Z[mm]')
     plt.ylabel('travel distance[mm]')
 
-df = pd.read_csv("out.csv",header=None)
+df = pd.read_csv(TMP_CSV_FOLDER,header=None)
 X = df.values[:,0]
 Y = df.values[:,1]
 Z = df.values[:,2]
@@ -138,7 +140,7 @@ plt.show()
 
 import numpy as np
 import pandas as pd
-df = pd.read_csv("out.csv",header=None)
+df = pd.read_csv(TMP_CSV_FOLDER,header=None)
 X = df.values[:,0]
 Y = df.values[:,1]
 Z = df.values[:,2]
